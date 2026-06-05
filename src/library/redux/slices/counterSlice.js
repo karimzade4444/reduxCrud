@@ -29,7 +29,8 @@ const initialState = {
   createModal: false,
   editModal: false,
   editName: "",
-  editAge: "",
+  editTitle: "",
+  editImg: "",
   id: "",
 };
 
@@ -50,10 +51,9 @@ const counterSlice = createSlice({
       state.selectedItem = action.payload;
       state.viewModal = true;
     },
-   
+
     createBlock: (state, action) => {
       state.data.push(action.payload);
-
 
       state.createImg = "";
       state.createName = "";
@@ -71,6 +71,28 @@ const counterSlice = createSlice({
     setCreatTitle: (state, action) => {
       state.createTitle = action.payload;
     },
+    editblock: (state, action) => {
+      console.log(action.payload);
+      state.data = state.data.map((el) => {
+        return el.id == action.payload.id ? { ...action.payload } : el;
+      });
+    },
+    setEditModal: (state, action) => {
+      state.editModal = action.payload;
+    },
+    setEditName: (state, action) => {
+      state.editName = action.payload;
+    },
+    setEditImg: (state, action) => {
+      state.editImg = action.payload;
+    },
+        
+    setEditTitle: (state, action) => {
+      state.editTitle = action.payload;
+    },
+    setEditId: (state, action) => {
+      state.id = action.payload;
+    },
   },
 });
 
@@ -83,6 +105,12 @@ export const {
   setCreatName,
   setCreatTitle,
   setCreateModal,
+  editBlock,
+  setEditImg,
+  setEditName,
+  setEditId,
+  setEditModal,
+  setEditTitle
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

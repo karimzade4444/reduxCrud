@@ -23,6 +23,10 @@ const initialState = {
   ],
   viewModal: false,
   selectedItem:null,
+  createImg:"",
+  createName:"",
+  createTitle:"",
+  createModal: false
 };
 
 const counterSlice = createSlice({
@@ -42,9 +46,23 @@ const counterSlice = createSlice({
       state.selectedItem = action.payload; 
       state.viewModal = true; 
     },
+    createBlock: (state,action)=>{
+        state.data=state.data=[...state.data,action.payload]
+    },
+        setCreateModal: (state, action) => {
+      state.createModal = action.payload;
   },
-});
+  setCreatImg:(state,action)=>{
+    state.createImg=action.payload;
+  },
+   setCreatName:(state,action)=>{
+    state.createName=action.payload;
+  },
+   setCreatTitle:(state,action)=>{
+    state.createTitle=action.payload;
+  }
+}});
 
-export const{deleteBlock,setViewModal, openViewModal} = counterSlice.actions
+export const{deleteBlock,setViewModal, openViewModal, createBlock, setCreatImg,setCreatName,setCreatTitle,setCreateModal} = counterSlice.actions
 
 export default counterSlice.reducer

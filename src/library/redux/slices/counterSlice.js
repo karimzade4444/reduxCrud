@@ -22,23 +22,29 @@ const initialState = {
     },
   ],
   viewModal: false,
+  selectedItem:null,
 };
 
 const counterSlice = createSlice({
-name: "CRUD",
-initialState,
-reducers:{
-
-    deleteBlock: (state,action)=>{
-        state.data=state.data.filter((el)=>el.id!==action.payload)
+  name: "CRUD",
+  initialState,
+  reducers: {
+    deleteBlock: (state, action) => {
+      state.data = state.data.filter((el) => el.id !== action.payload);
     },
-    setViewModal:(state,action)=>{
-        state.viewModal=action.payload
-    }
+    setViewModal: (state, action) => {
+      state.viewModal = action.payload;
+      if (!action.payload) {
+        state.selectedItem = null;
+      }
+    },
+    openViewModal: (state, action) => {
+      state.selectedItem = action.payload; 
+      state.viewModal = true; 
+    },
+  },
+});
 
-}
-})
-
-export const{deleteBlock,setViewModal} = counterSlice.actions
+export const{deleteBlock,setViewModal, openViewModal} = counterSlice.actions
 
 export default counterSlice.reducer

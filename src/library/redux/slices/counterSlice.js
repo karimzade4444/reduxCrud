@@ -27,6 +27,10 @@ const initialState = {
   createName: "",
   createTitle: "",
   createModal: false,
+  editModal: false,
+  editName: "",
+  editAge: "",
+  id: "",
 };
 
 const counterSlice = createSlice({

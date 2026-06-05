@@ -27,6 +27,10 @@ const counterSlice = createSlice({
 name: "CRUD",
 initialState,
 reducers:{
-    
+
 }
 })
+
+export const{} = counterSlice.actions
+
+export default counterSlice.reducer

@@ -59,7 +59,7 @@ const EditModal = () => {
                 img: editImg,
                 name: editName,
                 title: editTitle,
-            }))}}>
+            })), dispatch(setEditModal(false))}}>
               Изменить
             </button>
           </div>

@@ -4,6 +4,7 @@ import {
   setViewModal,
   openViewModal,
 } from "./library/redux/slices/counterSlice.js";
+import CreatModal from "./components/CreatModal.jsx";
 
 const App = () => {
   const { data, viewModal, selectedItem } = useSelector((e) => e.centralStore);
@@ -12,6 +13,7 @@ const App = () => {
   return (
     <div className="relative">
       <Screen />
+      <CreatModal/>
 
       {viewModal && (
         <div

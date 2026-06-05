@@ -22,11 +22,11 @@ const initialState = {
     },
   ],
   viewModal: false,
-  selectedItem:null,
-  createImg:"",
-  createName:"",
-  createTitle:"",
-  createModal: false
+  selectedItem: null,
+  createImg: "",
+  createName: "",
+  createTitle: "",
+  createModal: false,
 };
 
 const counterSlice = createSlice({
@@ -43,26 +43,42 @@ const counterSlice = createSlice({
       }
     },
     openViewModal: (state, action) => {
-      state.selectedItem = action.payload; 
-      state.viewModal = true; 
+      state.selectedItem = action.payload;
+      state.viewModal = true;
     },
-    createBlock: (state,action)=>{
-        state.data=state.data=[...state.data,action.payload]
+    // ИСПРАВЛЕНО: Безопасное добавление элемента через .push()
+    createBlock: (state, action) => {
+      state.data.push(action.payload);
+
+      // Сразу очищаем поля в сторе после успешного создания карточки
+      state.createImg = "";
+      state.createName = "";
+      state.createTitle = "";
     },
-        setCreateModal: (state, action) => {
+    setCreateModal: (state, action) => {
       state.createModal = action.payload;
+    },
+    setCreatImg: (state, action) => {
+      state.createImg = action.payload;
+    },
+    setCreatName: (state, action) => {
+      state.createName = action.payload;
+    },
+    setCreatTitle: (state, action) => {
+      state.createTitle = action.payload;
+    },
   },
-  setCreatImg:(state,action)=>{
-    state.createImg=action.payload;
-  },
-   setCreatName:(state,action)=>{
-    state.createName=action.payload;
-  },
-   setCreatTitle:(state,action)=>{
-    state.createTitle=action.payload;
-  }
-}});
+});
 
-export const{deleteBlock,setViewModal, openViewModal, createBlock, setCreatImg,setCreatName,setCreatTitle,setCreateModal} = counterSlice.actions
+export const {
+  deleteBlock,
+  setViewModal,
+  openViewModal,
+  createBlock,
+  setCreatImg,
+  setCreatName,
+  setCreatTitle,
+  setCreateModal,
+} = counterSlice.actions;
 
-export default counterSlice.reducer
+export default counterSlice.reducer;

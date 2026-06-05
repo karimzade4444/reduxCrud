@@ -28,9 +28,13 @@ name: "CRUD",
 initialState,
 reducers:{
 
+    deleteBlock: (state,action)=>{
+        state.data=state.data.filter((el)=>el.id!==action.payload)
+    }
+
 }
 })
 
-export const{} = counterSlice.actions
+export const{deleteBlock} = counterSlice.actions
 
 export default counterSlice.reducer

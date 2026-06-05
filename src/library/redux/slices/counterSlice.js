@@ -21,6 +21,7 @@ const initialState = {
       title: "Короткая шпаргалка по useState и пропсам.",
     },
   ],
+  viewModal: false,
 };
 
 const counterSlice = createSlice({
@@ -30,11 +31,14 @@ reducers:{
 
     deleteBlock: (state,action)=>{
         state.data=state.data.filter((el)=>el.id!==action.payload)
+    },
+    setViewModal:(state,action)=>{
+        state.viewModal=action.payload
     }
 
 }
 })
 
-export const{deleteBlock} = counterSlice.actions
+export const{deleteBlock,setViewModal} = counterSlice.actions
 
 export default counterSlice.reducer

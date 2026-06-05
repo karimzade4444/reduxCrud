@@ -46,11 +46,11 @@ const counterSlice = createSlice({
       state.selectedItem = action.payload;
       state.viewModal = true;
     },
-    // ИСПРАВЛЕНО: Безопасное добавление элемента через .push()
+   
     createBlock: (state, action) => {
       state.data.push(action.payload);
 
-      // Сразу очищаем поля в сторе после успешного создания карточки
+
       state.createImg = "";
       state.createName = "";
       state.createTitle = "";

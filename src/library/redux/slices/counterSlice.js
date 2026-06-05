@@ -32,6 +32,7 @@ const initialState = {
   editTitle: "",
   editImg: "",
   id: "",
+
 };
 
 const counterSlice = createSlice({
@@ -100,8 +101,9 @@ const counterSlice = createSlice({
       state.editName = name;
       state.editTitle = title;
       state.editModal = true;
-      state.viewModal = false; 
+      state.viewModal = false;
     },
+  
   },
 });
 
